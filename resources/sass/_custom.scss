@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #ffffff;
+}
+
+.main-nav {
+  background-color: #e9ecef;
+}
+.main-nav ul li{
+  list-style: none;
+  display: inline-block;
+  padding: 15px;
+  margin: 10px;
+}
