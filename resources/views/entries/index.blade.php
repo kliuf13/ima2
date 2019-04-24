@@ -1,23 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1> Ima Winners Gallery</h1>
-    @if(count($entries) > 1 )
-        @foreach($entries as $entry)
-            <div style="border: dashed 1px darkseagreen">
-                <h2> Winner - {{$entry->companyName}} </h2>
-                <ul>
-                    <li>{{$entry->firstName}}</li>
-                    <li>{{$entry->lastName}}</li>
-                    <li>{{$entry->projectTitle}}</li>
-                    <li>{{$entry->companyName}}</li>
-                    <li>{{$entry->siteURL}}</li>
-                </ul>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header"><h2>All your entries is here</h2></div>
+
+                    @if(count($entries) > 0 )
+                        <table>
+                            <tr>
+                                <th>Project name</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            @foreach($entries as $entry)
+                                <tr>
+                                    <th><a href="/entries/{{$entry->id}}">{{$entry->companyName}}</a></th>
+                                    <th><a href="/entries/{{$entry->id}}/edit">Edit</a></th>
+                                    <th>{!! Form::open(['action' => ['EntriesController@destroy', $entry->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                        {{Form::hidden('_method','DELETE')}}
+                                        {{Form::submit('Delete')}}
+                                        {!! Form::close()!!}</th>
+                                </tr>
+                            @endforeach
+                        </table>
+                    @else
+                        <p>No Entries found</p>
+                    @endif
+                    <br>
+                    <hr>
+                    <br>
+                    <h3> <a href="entries/create">Submit new Entry</a></h3>
+                </div>
             </div>
-
-        @endforeach
-    @else
-        <p>No Winners found</p>
-    @endif
+        </div>
+    </div>
 @endsection
-

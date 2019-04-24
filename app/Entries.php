@@ -12,4 +12,8 @@ class Entries extends Model
     public $primaryKey = 'id';
     // Timestamp
     public $timestamps = true;
+
+    public function user() {
+        $this->belongsTo('App/User');
+    }
 }

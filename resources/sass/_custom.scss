@@ -5,14 +5,37 @@
 }
 body {
   background-color: #ffffff;
+  width: 100%;
 }
-
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
 .main-nav {
   background-color: #e9ecef;
+  display: flex;
+  justify-content: space-around;
 }
 .main-nav ul li{
   list-style: none;
   display: inline-block;
   padding: 15px;
   margin: 10px;
+}
+
+ul li{
+  padding: 5px;
+}
+
+.form-group {
+  margin: 10px;
+}
+
+tr, th {
+  padding: 5px;
+}
+
+th {
+  border-bottom: 1px solid black;
 }

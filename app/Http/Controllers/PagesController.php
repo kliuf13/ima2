@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Entries;
 
 class PagesController extends Controller
 {
@@ -14,12 +15,10 @@ class PagesController extends Controller
         return view('pages.index')->with($meta_data);
     }
 
-    public function enter() {
-        $meta_data = array (
-            'title' => 'Entries page',
-            'description' => 'This is a page description'
-        );
-        return view('pages.enter')->with($meta_data);
+    public function winners() {
+        $entries = Entries::where('entryStatus', 'winner')->get();
+        return view('pages.winners')->with('entries', $entries);
     }
+
 
 }
